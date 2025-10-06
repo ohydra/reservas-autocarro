@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace reservas_autocarro
 {
-    class Program
+class Program
     {
         static void Main()
         {
@@ -18,14 +18,11 @@ namespace reservas_autocarro
             // Criar autocarros e viagens de exemplo
             Autocarro bus1 = new Autocarro(101, "AA-12-BB", 40, "João Mendes");
             Autocarro bus2 = new Autocarro(202, "CC-34-DD", 40, "Carla Silva");
-            Autocarro bus3 = new Autocarro(303, "DD-30-EE", 40, "Gonçalo Rocha");
             sistema.AdicionarAutocarro(bus1);
             sistema.AdicionarAutocarro(bus2);
-            sistema.AdicionarAutocarro(bus3);
 
             sistema.CriarViagem("Lisboa", "Porto", new DateTime(2025, 10, 7, 9, 0, 0), bus1);
             sistema.CriarViagem("Porto", "Braga", new DateTime(2025, 10, 7, 14, 30, 0), bus2);
-            sistema.CriarViagem("Porto", "Portimão", new DateTime(2025, 9, 3, 05, 30, 0), bus3);
 
             string opcao;
 
@@ -107,6 +104,31 @@ namespace reservas_autocarro
             }
         }
 
+        static void CriarReserva(SistemaReservas sistema)
+        {
+            Console.Clear();
+            Console.WriteLine("=== Criar Reserva ===");
+            var viagem = EscolherViagem(sistema);
+            if (viagem == null) return;
+
+            Console.Write("Nome do passageiro: ");
+            string nome = Console.ReadLine();
+
+            Console.Write("NIF: ");
+            string nif = Console.ReadLine();
+
+            Console.Write("Número do assento (1-40): ");
+            if (!int.TryParse(Console.ReadLine(), out int assento) || assento < 1 || assento > viagem.Autocarro.NumeroLugares)
+            {
+                Console.WriteLine("Assento inválido!");
+                return;
+            }
+
+            Passageiro passageiro = new Passageiro(nome, nif);
+            Reserva reserva = new Reserva(passageiro, assento, viagem);
+            viagem.AdicionarReserva(reserva);
+        }
+
         static void CancelarReserva(SistemaReservas sistema)
         {
             Console.Clear();
@@ -165,4 +187,5 @@ namespace reservas_autocarro
             return null;
         }
     }
+
 }
