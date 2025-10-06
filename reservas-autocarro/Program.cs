@@ -8,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace reservas_autocarro
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
+        static void Main()
         {
 
             string opcao;
@@ -73,23 +74,5 @@ namespace reservas_autocarro
 
             } while (opcao != "0");
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
-}
