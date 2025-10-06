@@ -43,8 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Autocarro.cs" />
+    <Compile Include="Passageiro.cs" />
+    <Compile Include="Pessoa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs" />
+    <Compile Include="SistemaReservas.cs" />
+    <Compile Include="Veiculo.cs" />
+    <Compile Include="Viagem.cs" />
+    <Compile Include="ViagemBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
