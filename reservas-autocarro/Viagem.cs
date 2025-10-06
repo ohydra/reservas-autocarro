@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace reservas_autocarro
 {
-using System;
-using System.Collections.Generic;
+    using System;
+    using System.Collections.Generic;
 
-public class Viagem : ViagemBase
+    public class Viagem : ViagemBase
     {
         public Autocarro Autocarro { get; set; }
         public List<Reserva> Reservas { get; set; } = new List<Reserva>();
