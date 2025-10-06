@@ -11,16 +11,6 @@ namespace reservas_autocarro
         static void Main(string[] args)
         {
 
-
-
-
-
-
-
-
-
-
-
             string opcao;
 
             do
@@ -80,6 +70,10 @@ namespace reservas_autocarro
                 }
 
             } while (opcao != "0");
+
+
+
+
 
 
 
