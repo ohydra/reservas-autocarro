@@ -8,34 +8,69 @@ namespace reservas_autocarro
 {
     class Program
     {
+        static void Main(string[] args)
         static void Main()
         {
-            SistemaReservas sistema = new SistemaReservas();
 
-            // Criar autocarros (agora com herança de Veiculo)
-            Autocarro bus1 = new Autocarro(101, "AA-12-BB", 40, "João Mendes");
-            Autocarro bus2 = new Autocarro(202, "CC-34-DD", 40, "Carla Silva");
+            string opcao;
 
-            sistema.AdicionarAutocarro(bus1);
-            sistema.AdicionarAutocarro(bus2);
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("=== Sistema de Reservas de Autocarro ===");
+                Console.WriteLine("1) Listar viagens");
+                Console.WriteLine("2) Ver mapa de lugares");
+                Console.WriteLine("3) Criar reserva");
+                Console.WriteLine("4) Cancelar reserva");
+                Console.WriteLine("5) Procurar reservas por passageiro");
+                Console.WriteLine("0) Sair");
+                Console.WriteLine("----------------------------------------");
+                Console.Write("Escolha uma opção: ");
+                opcao = Console.ReadLine();
 
-            // Mostrar detalhes do autocarro (demonstra polimorfismo)
-            Veiculo v = bus1;
-            v.MostrarInfo(); // chama o método do Autocarro (override)
+                switch (opcao)
+                {
+                    case "1":
+                        Console.WriteLine("\n[Opção: Listar viagens]");
+                        // Chamar método ListarViagens();
+                        break;
 
-            // Criar e listar viagens
-            sistema.CriarViagem("Lisboa", "Porto", new DateTime(2025, 10, 7, 9, 0, 0), bus1);
-            sistema.CriarViagem("Porto", "Braga", new DateTime(2025, 10, 7, 14, 30, 0), bus2);
+                    case "2":
+                        Console.WriteLine("\n[Opção: Ver mapa de lugares]");
+                        // Chamar método VerMapa();
+                        break;
 
-            sistema.ListarViagens();
+                    case "3":
+                        Console.WriteLine("\n[Opção: Criar reserva]");
+                        // Chamar método CriarReserva();
+                        break;
 
-            // Fazer reserva
-            Viagem viagem = sistema.Viagens[0];
-            Passageiro p1 = new Passageiro("Ana Silva", "123456789");
-            Reserva r1 = new Reserva(p1, 12, viagem);
-            viagem.AdicionarReserva(r1);
+                    case "4":
+                        Console.WriteLine("\n[Opção: Cancelar reserva]");
+                        // Chamar método CancelarReserva();
+                        break;
 
-            viagem.ListarReservas();
+                    case "5":
+                        Console.WriteLine("\n[Opção: Procurar reservas por passageiro]");
+                        // Chamar método ProcurarReservas();
+                        break;
+
+                    case "0":
+                        Console.WriteLine("\nA sair do sistema... até breve!");
+                        break;
+
+                    default:
+                        Console.WriteLine("\nOpção inválida! Tente novamente.");
+                        break;
+                }
+
+                if (opcao != "0")
+                {
+                    Console.WriteLine("\nPrima qualquer tecla para continuar...");
+                    Console.ReadKey();
+                }
+
+            } while (opcao != "0");
+
         }
     }
-}
