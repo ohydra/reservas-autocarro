@@ -110,7 +110,8 @@ class Program
                 else
                     Console.Write($"[{i}]".PadRight(5)); // Mostra o número do lugar livre
 
-                if (i % 10 == 0) Console.WriteLine(); // Nova linha a cada 10 lugares
+                if (i % 4 == 2) Console.Write("   "); // Espaço entre os dois lados do autocarro
+                if (i % 4 == 0) Console.WriteLine(); // Nova linha a cada 4 lugares
             }
 
             Console.WriteLine();
@@ -194,7 +195,8 @@ class Program
                 else
                     Console.Write($"[{i}]".PadRight(5)); // mostra número livre
 
-                if (i % 10 == 0) Console.WriteLine();
+                if (i % 4 == 2) Console.Write("   "); // Espaço entre os dois lados do autocarro
+                if (i % 4 == 0) Console.WriteLine(); // Nova linha a cada 4 lugares
             }
 
             Console.WriteLine();
