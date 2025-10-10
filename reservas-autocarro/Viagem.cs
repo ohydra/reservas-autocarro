@@ -31,11 +31,11 @@ namespace reservas_autocarro
             if (AssentoDisponivel(reserva.NumeroAssento))
             {
                 Reservas.Add(reserva);
-                Console.WriteLine($"✅ Reserva confirmada: assento {reserva.NumeroAssento}.");
+                Console.WriteLine($"Reserva confirmada: assento {reserva.NumeroAssento}.");
             }
             else
             {
-                Console.WriteLine($"❌ O assento {reserva.NumeroAssento} já está reservado!");
+                Console.WriteLine($"O assento {reserva.NumeroAssento} já está reservado!");
             }
         }
 
@@ -45,17 +45,17 @@ namespace reservas_autocarro
             if (reserva != null)
             {
                 Reservas.Remove(reserva);
-                Console.WriteLine($"✅ Reserva do assento {numeroAssento} cancelada.");
+                Console.WriteLine($"Reserva do assento {numeroAssento} cancelada.");
             }
             else
             {
-                Console.WriteLine($"⚠️ Nenhuma reserva encontrada para o assento {numeroAssento}.");
+                Console.WriteLine($"Nenhuma reserva encontrada para o assento {numeroAssento}.");
             }
         }
 
         public override void MostrarResumo()
         {
-            Console.WriteLine($"🚌 Viagem: {Origem} → {Destino} em {DataHora} ({Autocarro})");
+            Console.WriteLine($"Viagem: {Origem} >>> {Destino} em {DataHora} ({Autocarro})");
         }
 
         public void ListarReservas()
@@ -67,7 +67,7 @@ namespace reservas_autocarro
 
         public override string ToString()
         {
-            return $"{Origem} → {Destino} em {DataHora} | {Autocarro}";
+            return $"{Origem} >>> {Destino} em {DataHora} | {Autocarro}";
         }
     }
 }

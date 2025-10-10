@@ -29,7 +29,20 @@ class Program
             do
             {
                 Console.Clear();
+                Console.WriteLine(@"
+                                                                                                                        __________________________
+                                                                                                                       (_________________________@)
+                                                                                                                       /  |  |  |  |  |  |  |  || `\
+AUTOCARROS DE TURISMO                                                                                                  |__|__|__|__|__|__|__|__||___\
+ ,-----.                      ,--.        ,--.                   ,---.                                  ,--.           |===================     | : |`'-._
+'  .--./ ,--,--.,--.--.,--.--.`--',--,--, |  ,---.  ,--,--.     /  O  \ ,--,--,--. ,--,--.,--.--. ,---. |  | ,--,--.  _|    .-.  bang bus       | : | ,===`\
+|  |    ' ,-.  ||  .--'|  .--',--.|      \|  .-.  |' ,-.  |    |  .-.  ||        |' ,-.  ||  .--'| .-. :|  |' ,-.  | '=|___/.-.\________________|_:_|_/.-.\|
+'  '--'\\ '-'  ||  |   |  |   |  ||  ||  ||  | |  |\ '-'  |    |  | |  ||  |  |  |\ '-'  ||  |   \   --.|  |\ '-'  |       \'-'/                      \'-'/
+ `-----' `--`--'`--'   `--'   `--'`--''--'`--' `--' `--`--'    `--' `--'`--`--`--' `--`--'`--'    `----'`--' `--`--'.LDA    '-'                        '-'
+");
+
                 Console.WriteLine("=== Sistema de Reservas de Autocarro ===");
+                Console.WriteLine("");
                 Console.WriteLine("1) Listar viagens");
                 Console.WriteLine("2) Ver mapa de lugares");
                 Console.WriteLine("3) Criar reserva");
@@ -210,14 +223,14 @@ class Program
                     assento < 1 ||
                     assento > 40)
                 {
-                    Console.WriteLine("❌ Número inválido! Tente novamente.");
+                    Console.WriteLine("Número inválido! Tente novamente.");
                     continue;
                 }
 
                 bool ocupado = viagem.Reservas.Any(r => r.NumeroAssento == assento);
                 if (ocupado)
                 {
-                    Console.WriteLine("⚠️ Esse assento já está ocupado. Escolha outro.");
+                    Console.WriteLine("Esse assento já está ocupado. Escolha outro.");
                 }
                 else
                     break;
