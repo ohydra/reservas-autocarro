@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-/////COMENTARIO
 
 namespace reservas_autocarro
 {
@@ -38,6 +38,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
  |  __| | |    |  __|   > < | |  _ <| |  | |\___ \ 
  | |    | |____| |____ / . \| | |_) | |__| |____) |
  |_|    |______|______/_/ \_\_|____/ \____/|_____/ .LDA
+Miguel Andrade & Cristiano Mota
 ");
 
                 Console.WriteLine("=== Sistema de Reservas de Autocarro ===");
@@ -97,7 +98,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
         static void ListarViagens(SistemaReservas sistema)
         {
             Console.Clear();
-            Console.WriteLine("=== Lista de Viagens ===");
+            //=== Lista de Viagens ===
             sistema.ListarViagens();
         }
 
@@ -161,6 +162,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
             string nome;
             do
             {
+                Console.Write("");
                 Console.Write("Nome do passageiro: ");
                 nome = Console.ReadLine().Trim();
 
@@ -244,7 +246,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
             // === Diminui os lugares disponiveis ===
             viagem.Autocarro.NumeroLugares--;
 
-            Console.WriteLine($"\n Reserva criada com sucesso para {nome} (Assento {assento}).");
+            Console.WriteLine($"\nReserva criada com sucesso para {nome} (Assento {assento}).");
             Console.WriteLine($"Lugares restantes: {viagem.Autocarro.NumeroLugares}");
 
         }
@@ -256,7 +258,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
             var viagem = EscolherViagem(sistema);
             if (viagem == null) return;
 
-            Console.Write("Número do assento a cancelar: ");
+            Console.Write("Digite o número do assento a cancelar: ");
             if (int.TryParse(Console.ReadLine(), out int assento))
             {
                 viagem.CancelarReserva(assento);
@@ -272,6 +274,7 @@ AUTOCARROS DE TURISMO & TUKTUKS
         {
             Console.Clear();
             Console.WriteLine("=== Procurar Reservas por Passageiro ===");
+            Console.WriteLine("");
             Console.Write("Digite o nome ou NIF: ");
             string pesquisa = Console.ReadLine().ToLower();
 
@@ -281,25 +284,32 @@ AUTOCARROS DE TURISMO & TUKTUKS
             {
                 foreach (var reserva in viagem.Reservas)
                 {
-                    if (reserva.Passageiro.Nome.ToLower().Contains(pesquisa) ||
-                        reserva.Passageiro.NIF.ToLower().Contains(pesquisa))
+                    if (reserva.Passageiro.Nome.ToLower().Contains(pesquisa) || reserva.Passageiro.NIF.ToLower().Contains(pesquisa))
                     {
-                        Console.WriteLine($"{reserva.Passageiro.Nome} - Assento {reserva.NumeroAssento} na viagem {viagem.Origem} → {viagem.Destino}");
+                        Console.WriteLine("");
+                        Console.WriteLine($"{reserva.Passageiro.Nome} - Assento {reserva.NumeroAssento} na viagem {viagem.Origem} >>> {viagem.Destino}");
                         encontrou = true;
+                    }
+                    else
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Nenhuma reserva encontrada.");
                     }
                 }
             }
+       
 
-            if (!encontrou)
-                Console.WriteLine("Nenhuma reserva encontrada.");
+
         }
 
         static Viagem EscolherViagem(SistemaReservas sistema)
         {
-            Console.WriteLine("\nViagens disponíveis:");
+            //Console.WriteLine("\nViagens disponíveis:");
+            Console.WriteLine("");
             for (int i = 0; i < sistema.Viagens.Count; i++)
-                Console.WriteLine($"{i + 1}) {sistema.Viagens[i]}");
-
+                Console.WriteLine($"Viagem {i + 1}) {sistema.Viagens[i]}");
+            
+            Console.WriteLine("");
             Console.Write("Escolha o número da viagem: ");
             if (int.TryParse(Console.ReadLine(), out int escolha) && escolha >= 1 && escolha <= sistema.Viagens.Count)
                 return sistema.Viagens[escolha - 1];

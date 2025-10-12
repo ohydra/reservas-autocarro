@@ -20,7 +20,7 @@ namespace reservas_autocarro
 
         public override void MostrarInfo()
         {
-            Console.WriteLine($"🚌 Autocarro Nº {Numero} | Matrícula: {Matricula} | Lugares: {NumeroLugares} | Motorista: {Motorista}");
+            Console.WriteLine($"Autocarro Nº {Numero} | Matrícula: {Matricula} | Lugares: {NumeroLugares} | Motorista: {Motorista}");
         }
 
         public override string ToString()

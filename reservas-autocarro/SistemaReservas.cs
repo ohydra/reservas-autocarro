@@ -24,6 +24,8 @@ namespace reservas_autocarro
         public void ListarViagens()
         {
             Console.WriteLine("=== Lista de Viagens ===");
+            Console.WriteLine("");
+
             foreach (var v in Viagens)
                 v.MostrarResumo();
         }
