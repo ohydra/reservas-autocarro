@@ -278,7 +278,7 @@ Miguel Andrade & Cristiano Mota
             Console.Write("Digite o nome ou NIF: ");
             string pesquisa = Console.ReadLine().ToLower();
 
-            bool encontrou = false;
+            bool reservaini = false;
 
             foreach (var viagem in sistema.Viagens)
             {
@@ -288,18 +288,22 @@ Miguel Andrade & Cristiano Mota
                     {
                         Console.WriteLine("");
                         Console.WriteLine($"{reserva.Passageiro.Nome} - Assento {reserva.NumeroAssento} na viagem {viagem.Origem} >>> {viagem.Destino}");
-                        encontrou = true;
+                        reservaini = true;
                     }
                     else
                     {
                         Console.Clear();
                         Console.WriteLine("Nenhuma reserva encontrada.");
+                        reservaini = true;
                     }
                 }
             }
-       
 
-
+            if (reservaini == false) 
+            { 
+                Console.Clear();
+                Console.WriteLine("Sem nenhuma reserva atualmente no sistema.");
+            }
         }
 
         static Viagem EscolherViagem(SistemaReservas sistema)
