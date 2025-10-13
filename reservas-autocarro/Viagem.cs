@@ -48,6 +48,7 @@ namespace reservas_autocarro
                 Reservas.Remove(reserva);
                 Console.Clear();
                 Console.WriteLine($"Reserva do assento {numeroAssento} cancelada.");
+                Autocarro.NumeroLugares++;
             }
             else
             {

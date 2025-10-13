@@ -132,7 +132,13 @@ Miguel Andrade & Cristiano Mota
 
         static bool ValidarNIF(string nif)
         {
-            // Verifica se tem exatamente 9 dígitos
+            
+            return Regex.IsMatch(nif, @"^\d{9}$");
+
+
+
+
+            /*// Verifica se tem exatamente 9 dígitos
             if (!Regex.IsMatch(nif, @"^\d{9}$"))
                 return false;
 
@@ -149,7 +155,7 @@ Miguel Andrade & Cristiano Mota
             int resto = soma % 11;
             int checkDigit = resto < 2 ? 0 : 11 - resto;
 
-            return digits[8] == checkDigit;
+            return digits[8] == checkDigit;*/
         }
 
         static void CriarReserva(SistemaReservas sistema)
@@ -262,7 +268,7 @@ Miguel Andrade & Cristiano Mota
             if (int.TryParse(Console.ReadLine(), out int assento))
             {
                 viagem.CancelarReserva(assento);
-                viagem.Autocarro.NumeroLugares++;
+                //viagem.Autocarro.NumeroLugares++;
             }
             else
             {
